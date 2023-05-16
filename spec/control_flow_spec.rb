@@ -19,6 +19,17 @@ describe '#admin_login' do
 
 end
 
+def admin_login (username, password)
+  if (username ==  "admin" || "ADMIN") && password == "12345"
+    return "Access granted"
+  else
+    return "Access denied"
+  end
+end
+puts admin_login('admin','12345')
+puts admin_login('ADMIN', '12345')
+puts admin_login('sudo', '12345')
+
 describe '#hows_the_weather' do
   
   it 'returns "It\'s brisk out there!" if the temperature is below 40' do
@@ -38,6 +49,23 @@ describe '#hows_the_weather' do
   end
 
 end
+
+def hows_the_weather temperature
+  if temperature < 40
+    return "It\'s brisk out there!"
+  elsif temperature >=40 && temperature<= 65
+    return "It\'s a little chilly out there!"
+  elsif temperature > 85
+    return "It\'s too dang hot out there!"
+  else 
+    return "It\'s perfect out there!"
+  end
+end
+
+puts hows_the_weather(33)
+puts hows_the_weather(55)
+puts hows_the_weather(90)
+puts hows_the_weather(75)
 
 describe '#fizzbuzz' do
   
@@ -62,6 +90,23 @@ describe '#fizzbuzz' do
   end
 
 end
+
+def fizzbuzz number
+  if number % 3 == 0 && number % 5 == 0 
+    return "FizzBuzz"
+  elsif number % 3 == 0 
+    return "Fizz"
+  elsif number % 5 == 0
+    return "Buzz"
+  else 
+    return number
+  end
+end
+
+puts fizzbuzz(15)
+puts fizzbuzz(9)
+puts fizzbuzz(5)
+puts fizzbuzz(11)
 
 describe '#calculator' do
   
@@ -90,3 +135,25 @@ describe '#calculator' do
   end
   
 end
+
+def calculator (operation, num1, num2)
+  case operation
+  when "+"
+    return num1 + num2
+  when "*"
+    return num1 * num2
+  when "-"
+    return num1 - num2
+  when "/"
+    return num1 / num2.to_f
+  else
+    puts "Invalid operation!"
+    return nil
+  end
+end
+
+puts calculator("+", 1,1)
+puts calculator("*", 2,2)
+puts calculator("-", 4,2)
+puts calculator("/", 4,2)
+puts calculator("#", 99,4)
